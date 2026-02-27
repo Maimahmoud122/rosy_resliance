@@ -94,10 +94,12 @@ def forgot_password(data):
         return {"success": False, "message": "Email is required."}, 400, None
 
     # Always return success even if email not found (security)
-    generic_response = {
-        "success": True,
-        "message": "If this email is registered, a reset code has been sent.",
-    }, 200
+    user = User.query.filter_by(email=email).first()
+    if not user:
+        return {"success": False, "message": "No account found with this email address."}, 404, None
+
+    if not user.is_active:
+        return {"success": False, "message": "This account has been deactivated. Please contact support."}, 403, None
 
     user = User.query.filter_by(email=email).first()
     if not user:
