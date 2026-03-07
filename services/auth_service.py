@@ -70,8 +70,8 @@ def signup_patient(data):
     if errors:
         return {"success": False, "errors": errors}, 422, None
 
-    if User.query.filter_by(email=data["email"].lower().strip()).first():
-        return {"success": False, "message": "An account with this email already exists."}, 409, None
+    # if User.query.filter_by(email=data["email"].lower().strip()).first():
+    #     return {"success": False, "message": "An account with this email already exists."}, 409, None
 
     try:
         dob = None

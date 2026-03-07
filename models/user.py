@@ -23,7 +23,7 @@ class User(db.Model):
     __tablename__ = "users"
 
     user_id        = db.Column(db.UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    email          = db.Column(db.String(255), nullable=False, unique=True)
+    email          = db.Column(db.String(255), nullable=False, unique=False)
     password_hash  = db.Column(db.Text, nullable=False)
     role           = db.Column(db.Enum(UserRole), nullable=False)
     full_name      = db.Column(db.String(150), nullable=False)

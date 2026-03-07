@@ -45,6 +45,8 @@ def create_app():
     app.register_blueprint(auth_bp)
     app.register_blueprint(admin_bp)
     app.register_blueprint(account_bp)
+    from routes.assignment import assignment_bp
+    app.register_blueprint(assignment_bp)
 
     # Global error handlers
     @app.errorhandler(429)
