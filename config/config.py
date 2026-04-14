@@ -27,3 +27,12 @@ class Config:
     MAIL_USERNAME       = os.getenv("MAIL_USERNAME")
     MAIL_PASSWORD       = os.getenv("MAIL_PASSWORD")
     MAIL_DEFAULT_SENDER = os.getenv("MAIL_DEFAULT_SENDER")
+
+
+   # ── Cloudinary ────────────────────────────────────────
+    CLOUDINARY_CLOUD_NAME = os.getenv("CLOUDINARY_CLOUD_NAME")
+    CLOUDINARY_API_KEY    = os.getenv("CLOUDINARY_API_KEY")
+    CLOUDINARY_API_SECRET = os.getenv("CLOUDINARY_API_SECRET")
+ 
+    # ── Upload ────────────────────────────────────────────
+    MAX_CONTENT_LENGTH = 10 * 1024 * 1024   # 10MB max upload size

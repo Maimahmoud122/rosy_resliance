@@ -8,6 +8,7 @@ from flask_mail import Mail
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
+
 db      = SQLAlchemy()
 migrate = Migrate()
 bcrypt  = Bcrypt()
@@ -37,6 +38,7 @@ def create_app():
     from models import User, Doctor, Patient, Admin
     from models.email_verification import EmailVerification
     from models.password_reset_token import PasswordResetToken
+    from models.scan import Scan
 
     # Register blueprints
     from routes.auth import auth_bp
@@ -47,6 +49,8 @@ def create_app():
     app.register_blueprint(account_bp)
     from routes.assignment import assignment_bp
     app.register_blueprint(assignment_bp)
+    from routes.scan import scan_bp
+    app.register_blueprint(scan_bp)
 
     # Global error handlers
     @app.errorhandler(429)
