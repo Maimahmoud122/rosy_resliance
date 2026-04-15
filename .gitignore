@@ -21,3 +21,13 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+ml_model/
+*.keras
+*.h5
+*.pt
+breast_cancer_resnet50/
+
+supabase.tar.gz
+supabase/.temp/
+backup.sql

@@ -9,12 +9,19 @@ class Config:
     SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
 
     # ── Database ──────────────────────────────────────────
-    SQLALCHEMY_DATABASE_URI = (
-        f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}"
-        f"@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
-    )
+    # SQLALCHEMY_DATABASE_URI = (
+    #     f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}"
+    #     f"@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
+    # )
+    # SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL").replace("postgres://", "postgresql://", 1)
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+    SQLALCHEMY_ENGINE_OPTIONS = {
+        "connect_args": {
+            "sslmode": "require"
+        }
+    }
     # ── JWT ───────────────────────────────────────────────
     JWT_SECRET_KEY            = os.getenv("JWT_SECRET_KEY", "fallback-jwt-key")
     JWT_ACCESS_TOKEN_EXPIRES  = 3600      # 1 hour
