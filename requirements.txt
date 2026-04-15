@@ -15,6 +15,6 @@ tensorflow
 numpy
 pillow
 opencv-python
-
+huggingface_hub
 # Production server
 gunicorn
